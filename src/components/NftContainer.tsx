@@ -1,12 +1,7 @@
-import { FC } from 'react'
-import { Container } from '@mantine/core'
+import { Container } from "@mantine/core";
 
-const NftContainer: FC = () => {
-  return (
-    <Container>
-      {/* Cards go here */}
-    </Container>
-  )
-}
+const NftContainer = () => {
+  return <Container>{/* Cards go here */}</Container>;
+};
 
-export default NftContainer
+export default NftContainer;
