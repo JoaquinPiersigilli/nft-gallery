@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const HeaderComponent = () => {
+const HeaderComponent = ({ balance }: { balance: string }) => {
   return (
     <HeaderWrapper>
       <img
@@ -10,7 +10,7 @@ const HeaderComponent = () => {
         alt="Constellation Logo"
       />
       <Badge>
-        <EthAmount>3.9913 ETH</EthAmount>
+        <EthAmount>{balance} ETH</EthAmount>
       </Badge>
     </HeaderWrapper>
   );

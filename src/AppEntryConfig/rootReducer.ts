@@ -1,8 +1,7 @@
+
 import {
   combineReducers,
-  configureStore,
   createSlice,
-  Store,
   Slice,
 } from '@reduxjs/toolkit'
 
@@ -14,10 +13,6 @@ const nftState: Slice = createSlice({
   reducers: {},
 })
 
-const store: Store = configureStore({
-  reducer: combineReducers({
-    nfts: nftState.reducer,
-  })
+export const rootReducer = combineReducers({
+  nfts: nftState.reducer
 })
-
-export default store
