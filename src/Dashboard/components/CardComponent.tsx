@@ -18,31 +18,33 @@ export const CardComponent = ({
       </ImgContainer>
       <ImageFooter>
         <ImageFooterInfo>
-          <TextInformation>
-            <Name>name</Name>
-            <Description>description</Description>
-          </TextInformation>
-          <AssetStock>
-            Last
-            <img
-              src="https://openseauserdata.com/files/6f8e2979d428180222796ff4a33ab929.svg"
-              width="15"
-              height="18"
-              alt=""
-              style={{ margin: "-2px 0.2rem" }}
-            />
-            <LastValue>0.03</LastValue>
-          </AssetStock>
+          <ImageFooterInfoWrapper>
+            <Column>
+              <Name>{name}</Name>
+              <Description>{description}</Description>
+            </Column>
+            <AssetStock>
+              Last
+              <img
+                src="https://openseauserdata.com/files/6f8e2979d428180222796ff4a33ab929.svg"
+                width="15"
+                height="18"
+                alt=""
+                style={{ margin: "-2px 0.2rem" }}
+              />
+              <LastValue>0.03</LastValue>
+            </AssetStock>
+          </ImageFooterInfoWrapper>
         </ImageFooterInfo>
         <ImageFooterDetails>
-          <Asd>
+          <BuyTextContainer>
             <BuyText
               className="hoverValue"
               onClick={() => alert("Congratz you bought the NFT")}
             >
               Buy now
             </BuyText>
-          </Asd>
+          </BuyTextContainer>
           <RightDetails>
             <Icon>
               <FavoriteBorderIcon
@@ -75,7 +77,7 @@ const Icon = styled.div`
   }
 `;
 
-const Asd = styled.div`
+const BuyTextContainer = styled.div`
   box-sizing: border-box;
 `;
 
@@ -92,6 +94,21 @@ const BuyText = styled.button`
   &:hover {
     color: rgb(24, 104, 183);
   }
+`;
+
+const Column = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  width: 50%;
+  flex: 1;
+`;
+
+const ImageFooterInfoWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  min-height: min-content;
 `;
 
 const ImageFooter = styled.div`
@@ -125,7 +142,6 @@ const Item = styled.div`
   background-color: white;
   position: relative;
   overflow: hidden;
-  backdrop-filter: blur(4px);
 
   border: 1px solid lightgrey;
   border-radius: 1rem;
@@ -175,25 +191,28 @@ const ImageFooterInfo = styled.div`
   padding: 20px 10px;
   box-sizing: border-box;
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   justify-items: space-between;
-  align-items: center;
+  align-items: start;
+  overflow: auto;
 
   @media (max-width: 1200px) {
     flex-direction: column;
   }
 `;
 
-const TextInformation = styled.div`
-  width: 100%;
-  height: 100%;
+// const TextInformation = styled.div`
+//   width: 100%;
+//   height: 100%;
 
-  flex-direction: column;
-`;
+//   flex-direction: column;
+// `;
 
 const AssetStock = styled.div`
   font-family: inherit;
   color: grey;
-  width: 100%;
+  width: 50%;
   height: 100%;
   margin: 0;
   display: flex;
@@ -212,12 +231,14 @@ const LastValue = styled.p`
   margin: 0;
 `;
 
-const Name = styled.h3`
+const Name = styled.p`
+  font-size: 1rem;
   margin: 0;
   padding: 0;
 `;
 
-const Description = styled.h4`
+const Description = styled.p`
+  font-size: 0.75rem;
   margin: 0;
   padding: 0;
 `;
