@@ -1,30 +1,34 @@
 import styled from "styled-components";
 import { CardComponent } from "./CardComponent";
-import { assets } from "../../dummyAssets";
+import { dispatch, useSelector } from "../../AppEntryConfig/reduxStore";
+import { useEffect } from "react";
+import { OWNER_ADDRES, LIMIT } from "../../constants";
+import { initThunk } from "../nftSlice";
 
 export const NftContainer = () => {
-  return (
+  const { isLoading, isSuccess, assets } = useSelector((state) => state.nfts);
+
+  useEffect(() => {
+    dispatch(initThunk({ address: OWNER_ADDRES, limit: LIMIT }));
+  }, []);
+
+  return isLoading ? (
+    <h1>Loading...</h1>
+  ) : isSuccess ? (
     <CardsContainer>
-      {assets.map(
-        (
-          {
-            image_url,
-            name,
-            description,
-          }: { image_url: string; name: string; description: string },
-          index: number
-        ) => {
-          return (
-            <CardComponent
-              img={image_url}
-              key={index}
-              name={"description"}
-              description={"name"}
-            />
-          );
-        }
-      )}
+      {assets.map(({ image_url, name, description }, index: number) => {
+        return (
+          <CardComponent
+            img={image_url}
+            key={index}
+            name={name}
+            description={description}
+          />
+        );
+      })}
     </CardsContainer>
+  ) : (
+    <h1>Error while fetching nfts!</h1>
   );
 };
 

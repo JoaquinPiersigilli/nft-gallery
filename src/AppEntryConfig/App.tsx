@@ -5,7 +5,7 @@ import { Dashboard } from "../Dashboard";
 const App = () => (
   <AppShell
     padding="md"
-    header={<Header balance={"3.9913"} />}
+    header={<Header />}
     styles={(theme) => ({
       main: {
         backgroundColor:

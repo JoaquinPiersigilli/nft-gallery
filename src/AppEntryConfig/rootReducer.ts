@@ -1,18 +1,8 @@
-
-import {
-  combineReducers,
-  createSlice,
-  Slice,
-} from '@reduxjs/toolkit'
-
-const initialState = {}
-
-const nftState: Slice = createSlice({
-  name: 'nfts',
-  initialState,
-  reducers: {},
-})
+import { combineReducers } from "@reduxjs/toolkit";
+import { nftSlice } from "Dashboard/nftSlice";
+import { balanceSlice } from "SharedComponents/slices/balanceSlice";
 
 export const rootReducer = combineReducers({
-  nfts: nftState.reducer
-})
+  nfts: nftSlice.reducer,
+  ethBalance: balanceSlice.reducer,
+});

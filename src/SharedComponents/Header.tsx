@@ -1,6 +1,15 @@
+import { dispatch, useSelector } from "AppEntryConfig/reduxStore";
+import { useEffect } from "react";
 import styled from "styled-components";
+import { balanceThunk } from "./slices/balanceSlice";
 
-const HeaderComponent = ({ balance }: { balance: string }) => {
+const HeaderComponent = () => {
+  const { isLoading, balance } = useSelector((state) => state.ethBalance);
+
+  useEffect(() => {
+    dispatch(balanceThunk());
+  }, []);
+
   return (
     <HeaderWrapper>
       <img
@@ -10,7 +19,7 @@ const HeaderComponent = ({ balance }: { balance: string }) => {
         alt="Constellation Logo"
       />
       <Badge>
-        <EthAmount>{balance} ETH</EthAmount>
+        <EthAmount>{isLoading ? "..." : balance + " ETH"}</EthAmount>
       </Badge>
     </HeaderWrapper>
   );

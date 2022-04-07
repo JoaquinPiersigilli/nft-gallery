@@ -1,25 +1,25 @@
 import axios from "axios";
+import { OpenSeaAsset } from "../../OpenSeaTypes";
 
-type Props = {
-  address: string,
-  limit: string
-}
+type AssetsResponse = {
+  assets: OpenSeaAsset[];
+  next: string | undefined;
+  previous: string | undefined;
+};
 
-//define types
+const OPENSEA_URL_V1 = "https://api.opensea.io/api/v1/";
 
-export const getAssetsFromAddress = ({address, limit}:Props) => {
-  axios
-      .get(
-        `https://api.opensea.io/api/v1/assets?&owner=${address}&order_direction=desc&limit=${limit}&include_orders=false`
-      )
-      .then((collection: any) => {
-        const assets = collection.data.assets.map(
-          ({ name, image_url, description }: any) => ({
-            name,
-            image_url,
-            description,
-          })
-        );
-        //dispatch redux action
-      });
-}
+const createUrl = (owner: string, limit: number) => {
+  const params: { [string: string]: string | number } = { owner, limit };
+  const queryString = Object.keys(params)
+    .map((key) => key + "=" + params[key])
+    .join("&");
+
+  return OPENSEA_URL_V1 + "assets?" + queryString;
+};
+
+export const getAssetsFromAddress = async (address: string, limit: number) => {
+  return await axios
+    .get<AssetsResponse>(createUrl(address, limit))
+    .then((answer) => answer.data);
+};
