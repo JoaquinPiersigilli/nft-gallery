@@ -99,7 +99,7 @@ const ImageFooter = styled.div`
   height: 8rem;
   margin: 0 auto;
 
-  display: flex;
+  display: block;
   flex-direction: column;
   justify-items: center;
   align-items: flex-start;
@@ -140,11 +140,17 @@ const Item = styled.div`
       display: block;
     }
   }
-  @media (max-width: 700px) {
-    width: 35%;
+  @media (max-width: 1400px) {
+    width: 17%;
   }
-  @media (max-width: 350px) {
-    width: 70%;
+  @media (max-width: 850px) {
+    width: 25%;
+  }
+  @media (max-width: 600px) {
+    width: 40%;
+  }
+  @media (max-width: 410px) {
+    width: 60%;
   }
 `;
 
@@ -171,6 +177,10 @@ const ImageFooterInfo = styled.div`
   display: flex;
   justify-items: space-between;
   align-items: center;
+
+  @media (max-width: 1200px) {
+    flex-direction: column;
+  }
 `;
 
 const TextInformation = styled.div`
@@ -190,6 +200,10 @@ const AssetStock = styled.div`
   justify-content: end;
   align-items: start;
   font-size: 10px;
+
+  @media (max-width: 1200px) {
+    justify-content: start;
+  }
 `;
 
 const LastValue = styled.p`
