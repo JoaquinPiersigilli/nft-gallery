@@ -18,6 +18,7 @@ With more time I'd have:
   * Taken more time to get the styling right, probably would have try to use Tailwind. I noticed Mantine library was installed but never used it before so I didn't try. I looked up for it though and it seems so powerful, gonna use it for a personal project.
   * Leverage RTK to use RTK Query and have some cache over the images (right now every time we have 1 http request for each image url)
   * I will go over the project and try to improve it. For sure there are a lot of things to code in a better way.
+  * Forgot to add some logic to the state of each card to at least make the Favorite icon work for each card, so that too.
 
 
 # What would you need to do to make this project production ready? 
